@@ -10,7 +10,7 @@ import delData
 config = {
   "apiKey": "AIzaSyCC7DG-nDG7Qc3YzgUriicduohjQFd1qGE",
   "authDomain": "yukachan-ed770.firebaseapp.com",
-  "databaseURL": "https://yukachan-ed770.firebaseio.com/floors",
+  "databaseURL": "https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp",
   "storageBucket": "yukachan-ed770.appspot.com"
 }
 
