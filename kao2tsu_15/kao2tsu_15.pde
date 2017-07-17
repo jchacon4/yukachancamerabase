@@ -126,7 +126,7 @@ public void setup() {
 
 public void draw() {
   
-  json = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors.json");
+  json = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp.json");
 
 
   background(255);
