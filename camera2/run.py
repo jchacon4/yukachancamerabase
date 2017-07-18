@@ -22,7 +22,7 @@ class ThreadingExample(object):
 
     def run(self):
         """ Method that runs forever """
-        print("優花ちゃん頑張ってます！")
+        print("！")
         while True:
             # Do something
             readFile()

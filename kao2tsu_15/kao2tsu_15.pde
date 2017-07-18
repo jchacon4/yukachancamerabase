@@ -2,40 +2,30 @@
 import punktiert.math.Vec;
 import punktiert.physics.*;
 
-JSONArray json;
+JSONArray json1;
+JSONArray json2;
+JSONArray json3;
 PShape k;
 PShape kao2;
 PShape kao3;
 int x;
 int y;
-int co;
-int iro[] = {#1C1F87,#E50011,#FFF000};
+//int co;
+//int iro[] = {#1C1F87,#E50011,#FFF000};
 
 
 
 
 float atractor=100;
 
-BAttraction at1;
-BAttraction at2;
-BAttraction at3;
-BAttraction at4;
-BAttraction at5;
-BAttraction at6;
-BAttraction at7;
-BAttraction at8;
-BAttraction at9;
-BAttraction at10;
-BAttraction at11;
-BAttraction at12;
-BAttraction at13;
-BAttraction at14;
-BAttraction at15;
+BAttraction at1,at2,at3,at4,at5,at6,at7,at8,at9,at10,at11,at12,at13,at14,at15;
 
 int users[];
 
 
-int[][] zahyo = new int[2][15];
+int[][] zahyo1 = new int[2][5];
+int[][] zahyo2 = new int[2][5];
+int[][] zahyo3 = new int[2][5];
 
 // world object
 VPhysics physics;
@@ -126,36 +116,76 @@ public void setup() {
 
 public void draw() {
   
-  json = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp.json");
+  json1 = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp/floor1.json");
+  json2 = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp/floor2.json");
+  json3 = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp/floor3.json");
+
+  JSONArray floors = new JSONArray();
+  floors.setJSONArray(0, json1);
+  floors.setJSONArray(1, json2);
+  floors.setJSONArray(2, json3);
+  
+  
+
+  int userSize = 0;
 
 
   background(255);
   
-  for (int i = 1; i < json.size(); i++) {
+  for (int i = 0; i < floors.size(); i++) {
     
-    JSONObject item = json.getJSONObject(i); 
+    JSONArray item = floors.getJSONArray(i); 
 
-    int id = item.getInt("id");
-    int nk = item.getInt("nk");
-    int x = item.getInt("x");
-    int y = item.getInt("y");
+  for(int j = 1; j < item.size(); j++){
+      JSONObject user = item.getJSONObject(j);
+      
+    int id = user.getInt("id");
+    int nk = user.getInt("nk");
+    int x = user.getInt("x");
+    int y = user.getInt("y");
         
     
-    co=iro[nk-1];
-
+    //co=iro[nk-1];
+    //co=100;
+    
+    if(i==0){
+    
+    zahyo1[0][id-1]=x;
+    zahyo1[1][id-1]=y;
+  
     //ball(id,nk,x,y);
     physics.update();
+    set(nk,item.size());
+    setColor(nk,item.size());
+    }
+    
+    if(i==1){
+    
+    zahyo2[0][id-1]=x;
+    zahyo2[1][id-1]=y;
+  
+    //ball(id,nk,x,y);
+    physics.update();
+    set(nk,item.size());
+    setColor(nk,item.size());
+    }
+    
+    if(i==2){
+    
+    zahyo3[0][id-1]=x;
+    zahyo3[1][id-1]=y;
+  
+    //ball(id,nk,x,y);
+    physics.update();
+    set(nk,item.size());
+    setColor(nk,item.size());
+    
+    }
     
     //set shape and position of present attractors
-    set(json.size());
-    
-    
-    
-    zahyo[0][id-1]=x;
-    zahyo[1][id-1]=y;
-  
-  
   }
-  setColor(json.size()-1);
+
   }
+ 
+    }
  

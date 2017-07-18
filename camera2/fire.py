@@ -39,9 +39,9 @@ db.child("floor2").child(0).set("", user['idToken'])
 def enviar(nk,id,x,y,tm,destroy):
     data = {"nk": nk, "id": id,"x": int(x),"y": int(y), "time": tm}
     if(destroy == False):
-        results = db.child("floor3").child(id).set(data, user['idToken'])
+        results = db.child("floor2").child(id).set(data, user['idToken'])
     else:
-        db.child("floor3").child(id).remove(user['idToken'])
+        db.child("floor2").child(id).remove(user['idToken'])
         say(id)
 
 

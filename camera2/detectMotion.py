@@ -58,7 +58,7 @@ while True:
 
 
     cid= 0
-    nk = 1
+    nk = 2
 
     thresh = cv2.dilate(thresh, None, iterations=2)
     _, cnts, _ = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
