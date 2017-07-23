@@ -31,7 +31,7 @@ def testIntersectionOut(x, y):
 
     return False
 
-camera = cv2.VideoCapture("3.mp4")
+camera = cv2.VideoCapture("rtsp://172.20.10.8:554/ch0_0.h264")
 
 firstFrame = None
 
@@ -53,12 +53,12 @@ while True:
 
 
     frameDelta = cv2.absdiff(firstFrame, gray)
-    thresh = cv2.threshold(frameDelta, 43, 255, cv2.THRESH_BINARY)[1]
+    thresh = cv2.threshold(frameDelta, 48, 255, cv2.THRESH_BINARY)[1]
 
 
 
     cid= 0
-    nk = 3
+    nk = 1
 
     thresh = cv2.dilate(thresh, None, iterations=2)
     _, cnts, _ = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)

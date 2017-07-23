@@ -53,7 +53,7 @@ def enviar(nk,id,x,y,tm,destroy):
 def getData(data):
         if len(data) > 0:
             for u in data:
-                if(time.time()-u['tm']>5):
+                if(time.time()-u['tm']>1):
                     enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'], True)
                 else:
                     enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'], False)
