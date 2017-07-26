@@ -70,21 +70,21 @@ public void setup() {
   physics = new VPhysics();
   physics.setfriction(.2f);
 
-  attr = new BAttraction(new Vec(0,0 ), 100, .50f);
-  attr2 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr3 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr4 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr5 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr6 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr7 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr8 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr9 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr10 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr11 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr12 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr13 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr14 = new BAttraction(new Vec(0,0), 100, .50f);
-  attr15 = new BAttraction(new Vec(0,0), 100, .50f);
+  attr = new BAttraction(new Vec(-2000,-2000 ), 0, .0f);
+  attr2 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr3 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr4 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr5 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr6 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr7 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr8 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr9 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr10 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr11 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr12 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr13 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr14 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
+  attr15 = new BAttraction(new Vec(-2000,-2000), 0, .0f);
 
   physics.addBehavior(attr);
   physics.addBehavior(attr2);
@@ -128,49 +128,72 @@ public void draw() {
 
 
   //import json
-  json1 = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp/floor1.json"); //user1,user2,user3
-  json2 = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp/floor2.json");
-  json3 = loadJSONArray("https://yukachan-ed770.firebaseio.com/floors/-KpFmeKGYKti1espnifp/floor3.json");
+  json1 = loadJSONArray("http://localhost:8000/f1.json"); //user1,user2,user3
+  json2 = loadJSONArray("http://localhost:8000/f2.json");
+  json3 = loadJSONArray("http://localhost:8000/f3.json");
+
 
 
   if (json1.getJSONObject(1).getBoolean("show") == true){
     zahyo1[0][0]= json1.getJSONObject(1).getInt("x");
     zahyo1[1][0]= json1.getJSONObject(1).getInt("y");
+    attr.setRadius(200);
+    attr.setStrength(0.1f);
+    attr.setAttractor(new Vec(zahyo1[0][0], zahyo1[1][0]));
+
   }else{
-    zahyo1[0][0]= -500;
-    zahyo1[1][0]= -500;
+    zahyo1[0][0]= -2000;
+    zahyo1[1][0]= -2000;
+    attr.setRadius(0);
+    attr.setStrength(0.0f);
+    attr.setAttractor(new Vec(zahyo1[0][0], zahyo1[1][0]));
+
   }
 
   if (json1.getJSONObject(2).getBoolean("show") == true){
-    zahyo1[0][0]= json1.getJSONObject(2).getInt("x");
-    zahyo1[1][0]= json1.getJSONObject(2).getInt("y");
+    zahyo1[0][1]= json1.getJSONObject(2).getInt("x");
+    zahyo1[1][1]= json1.getJSONObject(2).getInt("y");
+    attr2.setRadius(200);
+    attr2.setStrength(0.1f);
+    attr2.setAttractor(new Vec(zahyo1[0][1], zahyo1[1][1]));
+
   }else{
-    zahyo1[0][0]= -500;
-    zahyo1[1][0]= -500;
+    zahyo1[0][1]= -2000;
+    zahyo1[1][1]= -2000;
+    attr2.setRadius(0);
+    attr2.setStrength(0.0f);
+    attr2.setAttractor(new Vec(zahyo1[0][1], zahyo1[1][1]));
+
   }
 
   if (json1.getJSONObject(3).getBoolean("show") == true){
-    zahyo1[0][0]= json1.getJSONObject(3).getInt("x");
-    zahyo1[1][0]= json1.getJSONObject(3).getInt("y");
+    zahyo1[0][2]= json1.getJSONObject(3).getInt("x");
+    zahyo1[1][2]= json1.getJSONObject(3).getInt("y");
+    attr3.setRadius(200);
+    attr3.setStrength(0.2f);
   }else{
-    zahyo1[0][0]= -500;
-    zahyo1[1][0]= -500;
+    attr3.setRadius(0);
+    attr3.setStrength(0.0f);
   }
 
   if (json1.getJSONObject(4).getBoolean("show") == true){
-    zahyo1[0][0]= json1.getJSONObject(4).getInt("x");
-    zahyo1[1][0]= json1.getJSONObject(4).getInt("y");
+    zahyo1[0][3]= json1.getJSONObject(4).getInt("x");
+    zahyo1[1][3]= json1.getJSONObject(4).getInt("y");
+    attr4.setRadius(200);
+    attr4.setStrength(0.2f);
   }else{
-    zahyo1[0][0]= -500;
-    zahyo1[1][0]= -500;
+    attr4.setRadius(0);
+    attr4.setStrength(0.0f);
   }
 
   if (json1.getJSONObject(5).getBoolean("show") == true){
-    zahyo1[0][0]= json1.getJSONObject(5).getInt("x");
-    zahyo1[1][0]= json1.getJSONObject(5).getInt("y");
+    zahyo1[0][4]= json1.getJSONObject(5).getInt("x");
+    zahyo1[1][4]= json1.getJSONObject(5).getInt("y");
+    attr5.setRadius(200);
+    attr5.setStrength(0.2f);
   }else{
-    zahyo1[0][0]= -500;
-    zahyo1[1][0]= -500;
+    attr5.setRadius(0);
+    attr5.setStrength(0.0f);
   }
 
 
@@ -181,41 +204,51 @@ public void draw() {
   if (json2.getJSONObject(1).getBoolean("show") == true){
     zahyo2[0][0]= json2.getJSONObject(1).getInt("x");
     zahyo2[1][0]= json2.getJSONObject(1).getInt("y");
+    attr6.setRadius(200);
+    attr6.setStrength(0.2f);
   }else{
-    zahyo2[0][0]= -500;
-    zahyo2[1][0]= -500;
+    attr6.setRadius(0);
+    attr6.setStrength(0.0f);
   }
 
   if (json2.getJSONObject(2).getBoolean("show") == true){
-    zahyo2[0][0]= json2.getJSONObject(2).getInt("x");
-    zahyo2[1][0]= json2.getJSONObject(3).getInt("y");
+    zahyo2[0][1]= json2.getJSONObject(2).getInt("x");
+    zahyo2[1][1]= json2.getJSONObject(3).getInt("y");
+    attr7.setRadius(200);
+    attr7.setStrength(0.2f);
   }else{
-    zahyo2[0][0]= -500;
-    zahyo2[1][0]= -500;
+    attr7.setRadius(0);
+    attr7.setStrength(0.0f);
   }
 
   if (json2.getJSONObject(3).getBoolean("show") == true){
-    zahyo2[0][0]= json2.getJSONObject(3).getInt("x");
-    zahyo2[1][0]= json2.getJSONObject(3).getInt("y");
+    zahyo2[0][2]= json2.getJSONObject(3).getInt("x");
+    zahyo2[1][2]= json2.getJSONObject(3).getInt("y");
+    attr8.setRadius(200);
+    attr8.setStrength(0.2f);
   }else{
-    zahyo2[0][0]= -500;
-    zahyo2[1][0]= -500;
+    attr8.setRadius(0);
+    attr8.setStrength(0.0f);
   }
 
   if (json2.getJSONObject(4).getBoolean("show") == true){
-    zahyo2[0][0]= json2.getJSONObject(4).getInt("x");
-    zahyo2[1][0]= json2.getJSONObject(4).getInt("y");
+    zahyo2[0][3]= json2.getJSONObject(4).getInt("x");
+    zahyo2[1][3]= json2.getJSONObject(4).getInt("y");
+    attr9.setRadius(200);
+    attr9.setStrength(0.2f);
   }else{
-    zahyo2[0][0]= -500;
-    zahyo2[1][0]= -500;
+    attr9.setRadius(0);
+    attr9.setStrength(0.0f);
   }
 
   if (json2.getJSONObject(5).getBoolean("show") == true){
-    zahyo2[0][0]= json2.getJSONObject(5).getInt("x");
-    zahyo2[1][0]= json2.getJSONObject(5).getInt("y");
+    zahyo2[0][4]= json2.getJSONObject(5).getInt("x");
+    zahyo2[1][4]= json2.getJSONObject(5).getInt("y");
+    attr10.setRadius(200);
+    attr10.setStrength(0.2f);
   }else{
-    zahyo2[0][0]= -500;
-    zahyo2[1][0]= -500;
+    attr10.setRadius(0);
+    attr10.setStrength(0.0f);
   }
 
 
@@ -224,63 +257,72 @@ public void draw() {
   if (json3.getJSONObject(1).getBoolean("show") == true){
     zahyo3[0][0]= json3.getJSONObject(1).getInt("x");
     zahyo3[1][0]= json3.getJSONObject(1).getInt("y");
+    attr11.setRadius(200);
+    attr11.setStrength(0.2f);
   }else{
-    zahyo3[0][0]= -500;
-    zahyo3[1][0]= -500;
+    attr11.setRadius(0);
+    attr11.setStrength(0.0f);
   }
 
   if (json3.getJSONObject(2).getBoolean("show") == true){
-    zahyo3[0][0]= json3.getJSONObject(2).getInt("x");
-    zahyo3[1][0]= json3.getJSONObject(2).getInt("y");
+    zahyo3[0][1]= json3.getJSONObject(2).getInt("x");
+    zahyo3[1][1]= json3.getJSONObject(2).getInt("y");
+    attr12.setRadius(200);
+    attr12.setStrength(0.2f);
   }else{
-    zahyo3[0][0]= -500;
-    zahyo3[1][0]= -500;
+    attr12.setRadius(0);
+    attr12.setStrength(0.0f);
   }
 
   if (json3.getJSONObject(3).getBoolean("show") == true){
-    zahyo3[0][0]= json3.getJSONObject(3).getInt("x");
-    zahyo3[1][0]= json3.getJSONObject(3).getInt("y");
+    zahyo3[0][2]= json3.getJSONObject(3).getInt("x");
+    zahyo3[1][2]= json3.getJSONObject(3).getInt("y");
+    attr13.setRadius(200);
+    attr13.setStrength(0.2f);
   }else{
-    zahyo3[0][0]= -500;
-    zahyo3[1][0]= -500;
+    attr13.setRadius(0);
+    attr13.setStrength(0.0f);
   }
 
   if (json3.getJSONObject(4).getBoolean("show") == true){
-    zahyo3[0][0]= json3.getJSONObject(4).getInt("x");
-    zahyo3[1][0]= json3.getJSONObject(4).getInt("y");
+    zahyo3[0][3]= json3.getJSONObject(4).getInt("x");
+    zahyo3[1][3]= json3.getJSONObject(4).getInt("y");
+    attr14.setRadius(200);
+    attr14.setStrength(0.2f);
   }else{
-    zahyo3[0][0]= -500;
-    zahyo3[1][0]= -500;
+    attr14.setRadius(0);
+    attr14.setStrength(0.0f);
   }
 
   if (json3.getJSONObject(5).getBoolean("show") == true){
-    zahyo3[0][0]= json3.getJSONObject(5).getInt("x");
-    zahyo3[1][0]= json3.getJSONObject(5).getInt("y");
+    zahyo3[0][4]= json3.getJSONObject(5).getInt("x");
+    zahyo3[1][4]= json3.getJSONObject(5).getInt("y");
+    attr15.setRadius(200);
+    attr15.setStrength(0.2f);
   }else{
-    zahyo3[0][0]= -500;
-    zahyo3[1][0]= -500;
+    attr15.setRadius(0);
+    attr15.setStrength(0.0f);
   }
 
 
-  attr.setAttractor(new Vec(zahyo1[0][0], zahyo1[1][0]));
   attr2.setAttractor(new Vec(zahyo1[0][1], zahyo1[1][1]));
   attr3.setAttractor(new Vec(zahyo1[0][2], zahyo1[1][2]));
   attr4.setAttractor(new Vec(zahyo1[0][3], zahyo1[1][3]));
   attr5.setAttractor(new Vec(zahyo1[0][4], zahyo1[1][4]));
 
 
-  attr.setAttractor(new Vec(zahyo2[0][0], zahyo2[1][0]));
-  attr2.setAttractor(new Vec(zahyo2[0][1], zahyo2[1][1]));
-  attr3.setAttractor(new Vec(zahyo2[0][2], zahyo2[1][2]));
-  attr4.setAttractor(new Vec(zahyo2[0][3], zahyo2[1][3]));
-  attr5.setAttractor(new Vec(zahyo2[0][4], zahyo2[1][4]));
+  attr6.setAttractor(new Vec(zahyo2[0][0], zahyo2[1][0]));
+  attr7.setAttractor(new Vec(zahyo2[0][1], zahyo2[1][1]));
+  attr8.setAttractor(new Vec(zahyo2[0][2], zahyo2[1][2]));
+  attr9.setAttractor(new Vec(zahyo2[0][3], zahyo2[1][3]));
+  attr10.setAttractor(new Vec(zahyo2[0][4], zahyo2[1][4]));
 
 
-  attr.setAttractor(new Vec(zahyo3[0][0], zahyo3[1][0]));
-  attr2.setAttractor(new Vec(zahyo3[0][1], zahyo3[1][1]));
-  attr3.setAttractor(new Vec(zahyo3[0][2], zahyo3[1][2]));
-  attr4.setAttractor(new Vec(zahyo3[0][3], zahyo3[1][3]));
-  attr5.setAttractor(new Vec(zahyo3[0][4], zahyo3[1][4]));
+  attr11.setAttractor(new Vec(zahyo3[0][0], zahyo3[1][0]));
+  attr12.setAttractor(new Vec(zahyo3[0][1], zahyo3[1][1]));
+  attr13.setAttractor(new Vec(zahyo3[0][2], zahyo3[1][2]));
+  attr14.setAttractor(new Vec(zahyo3[0][3], zahyo3[1][3]));
+  attr15.setAttractor(new Vec(zahyo3[0][4], zahyo3[1][4]));
 
 
   ellipse(attr.getAttractor().x, attr.getAttractor().y, attr.getRadius(), attr.getRadius());
