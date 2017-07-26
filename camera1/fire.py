@@ -27,7 +27,7 @@ def say(id):
         json_data = json.load(f)
         for i in json_data:
             if i['id'] == id:
-                json_data.remove(i)
+                i['s'] = False;
         f.seek(0)
         f.write(json.dumps(json_data))
         f.truncate()
@@ -36,12 +36,13 @@ def say(id):
 
 db.child("floor1").child(0).set("", user['idToken'])
 
-def enviar(nk,id,x,y,tm,destroy):
-    data = {"nk": nk, "id": id,"x": int(x),"y": int(y), "time": tm}
+def enviar(nk,id,x,y,tm,s,destroy):
+    data = {"nk": nk, "id": id,"x": int(x),"y": int(y), "time": tm, "show": s}
     if(destroy == False):
         results = db.child("floor1").child(id).set(data, user['idToken'])
     else:
-        db.child("floor1").child(id).remove(user['idToken'])
+        data = {"nk": nk, "id": id,"x": int(x),"y": int(y), "time": tm, "show": False}
+        results = db.child("floor1").child(id).set(data, user['idToken'])
         say(id)
 
 
@@ -54,9 +55,9 @@ def getData(data):
         if len(data) > 0:
             for u in data:
                 if(time.time()-u['tm']>1):
-                    enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'], True)
+                    enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'],u['s'], True)
                 else:
-                    enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'], False)
+                    enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'],u['s'], False)
 
 
 

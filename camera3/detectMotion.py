@@ -79,10 +79,10 @@ while True:
 
         tm = time.time()
         nk = 1
-
+        show = True;
 
         #fire.enviar(nk,cid,x,y)
-        putData(cid,nk,tm,x,y)
+        putData(cid,nk,tm,x,y,show)
         writeFile()
 
 

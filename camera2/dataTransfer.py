@@ -7,8 +7,8 @@ import run
 datos = []
 
 
-def putData (id,nk,tm,x,y):
-    user = {'id':id, 'nk': nk, 'tm': tm, 'x': x, 'y': y}
+def putData (id,nk,tm,x,y,s):
+    user = {'id':id, 'nk': nk, 'tm': tm, 'x': x, 'y': y, 's': s}
     if len(datos)>0 and id-1 < len(datos):
         del datos[id-1]
     datos.insert(id-1, user)

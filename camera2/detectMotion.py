@@ -31,7 +31,7 @@ def testIntersectionOut(x, y):
 
     return False
 
-camera = cv2.VideoCapture("2.mp4")
+camera = cv2.VideoCapture("rtsp://172.20.10.8:554/ch0_0.h264")
 
 firstFrame = None
 
@@ -79,10 +79,10 @@ while True:
 
         tm = time.time()
         nk = 1
-
+        show = True;
 
         #fire.enviar(nk,cid,x,y)
-        putData(cid,nk,tm,x,y)
+        putData(cid,nk,tm,x,y,show)
         writeFile()
 
 
