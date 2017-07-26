@@ -31,7 +31,7 @@ def testIntersectionOut(x, y):
 
     return False
 
-camera = cv2.VideoCapture("rtsp://172.20.10.8:554/ch0_0.h264")
+camera = cv2.VideoCapture("http://10.43.121.59:8160/")
 
 firstFrame = None
 
