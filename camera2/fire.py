@@ -39,10 +39,10 @@ db.child("floor2").child(0).set("", user['idToken'])
 def enviar(nk,id,x,y,tm,s,destroy):
     data = {"nk": nk, "id": id,"x": int(x),"y": int(y), "time": tm, "show": s}
     if(destroy == False):
-        results = db.child("floor1").child(id).set(data, user['idToken'])
+        results = db.child("floor2").child(id).set(data, user['idToken'])
     else:
         data = {"nk": nk, "id": id,"x": int(x),"y": int(y), "time": tm, "show": False}
-        results = db.child("floor1").child(id).set(data, user['idToken'])
+        results = db.child("floor2").child(id).set(data, user['idToken'])
         say(id)
 
 
@@ -54,7 +54,7 @@ def enviar(nk,id,x,y,tm,s,destroy):
 def getData(data):
         if len(data) > 0:
             for u in data:
-                if(time.time()-u['tm']>1):
+                if(time.time()-u['tm']>3):
                     enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'],u['s'], True)
                 else:
                     enviar(u['nk'],u['id'],u['x'],u['y'],u['tm'],u['s'], False)

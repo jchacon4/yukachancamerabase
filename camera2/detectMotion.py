@@ -31,7 +31,8 @@ def testIntersectionOut(x, y):
 
     return False
 
-camera = cv2.VideoCapture("http://10.43.121.59:8160/")
+camera = cv2.VideoCapture("http://192.168.2.2:8160/")
+out = cv2.VideoWriter('output.mp4', -1, 20.0, (800,400))
 
 firstFrame = None
 
@@ -94,9 +95,12 @@ while True:
         break
 
 
+    out.write(frame)
     cv2.imshow("Security Feed", frame)
+
 
 
 # cleanup the camera and close any open windows
 camera.release()
+out.release()
 cv2.destroyAllWindows()
