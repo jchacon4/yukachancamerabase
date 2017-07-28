@@ -32,7 +32,7 @@ def testIntersectionOut(x, y):
     return False
 
 camera = cv2.VideoCapture("rtsp://192.168.43.1:8080/h264_pcm.sdp")
-out = cv2.VideoWriter('output.mp4', -1, 20.0, (800,400))
+out = cv2.VideoWriter('output_camera3.mp4', -1, 20.0, (800,400))
 
 firstFrame = None
 
